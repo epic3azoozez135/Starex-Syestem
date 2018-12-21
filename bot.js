@@ -27,5 +27,68 @@ client.on('message',async message => {//Toxic Code
   }
 });
 
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
 
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 10,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send("**:link:.تم ارسال الرابط برسالة خاصة**")
+
+message.author.send(`**مدة الرابط : يـوم
+عدد استخدامات الرابط : 10**`)
+      
+const adminprefix = "s$";
+const devs = ['368768446327947265','462038057529507841'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+  message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+} else 
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+      } else     
+if (message.content.startsWith(adminprefix + 'sett')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");//
+ message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+}
+});
+
+      client.on("message", message => {
+    var prefix = "s$";
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "clear")) {
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **لا يوجد لديك صلاحية لمسح الشات**');
+        var msg;
+        msg = parseInt();
+      
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "Done | تــم مسح الشات",
+        color: 0x06DF00,
+        description: "تم مسح الرسائل ",
+        footer: {
+          text: " Starex Protect. "
+        }
+      }}).then(msg => {msg.delete(3000)});
+                          }
+
+     
+})
+      
+      
+      
 client.login(process.env.BOT_TOKEN); 
